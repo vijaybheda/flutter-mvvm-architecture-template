@@ -150,6 +150,20 @@ find lib -name "*.dart" -type f -exec sh -c '
     done
 ' sh "$OLD_PACKAGE_NAME" "$NEW_PACKAGE_PATH" {} +
 
+# Update import statements in test files
+find test -name "*.dart" -type f -exec sh -c '
+    OLD="$1"
+    NEW="$2"
+    shift 2
+    for file in "$@"; do
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            sed -i "" "s/package:${OLD}/package:${NEW}/g" "$file"
+        else
+            sed -i "s/package:${OLD}/package:${NEW}/g" "$file"
+        fi
+    done
+' sh "$OLD_PACKAGE_NAME" "$NEW_PACKAGE_PATH" {} +
+
 print_color $GREEN "Package rename completed successfully!"
 print_color $BLUE "Next steps:"
 echo "1. Run 'flutter clean'"
