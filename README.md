@@ -41,6 +41,10 @@ git clone https://github.com/pragneshkoli/flutter-mvvm-architecture-template.git
 
 2. Rename the package:
 ```bash
+
+# Navigate to the project directory
+cd flutter-mvvm-architecture-template
+
 # Make the script executable
 chmod +x rename_package.sh
 
