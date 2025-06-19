@@ -40,6 +40,8 @@ git clone https://github.com/pragneshkoli/flutter-mvvm-architecture-template.git
 ```
 
 2. Rename the package:
+   - Navigate to the project directory and run the rename script with your desired package name.
+   - The script will update the package name in all necessary files.
 ```bash
 
 # Navigate to the project directory
