@@ -138,14 +138,17 @@ fi
 # Update import statements in Dart files
 print_color $BLUE "Updating Dart imports..."
 find lib -name "*.dart" -type f -exec sh -c '
-    for file do
+    OLD="$1"
+    NEW="$2"
+    shift 2
+    for file in "$@"; do
         if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i "" "s/package:$OLD_PACKAGE_NAME/package:$NEW_PACKAGE_PATH/g" "$file"
+            sed -i "" "s/package:${OLD}/package:${NEW}/g" "$file"
         else
-            sed -i "s/package:$OLD_PACKAGE_NAME/package:$NEW_PACKAGE_PATH/g" "$file"
+            sed -i "s/package:${OLD}/package:${NEW}/g" "$file"
         fi
     done
-' sh {} +
+' sh "$OLD_PACKAGE_NAME" "$NEW_PACKAGE_PATH" {} +
 
 print_color $GREEN "Package rename completed successfully!"
 print_color $BLUE "Next steps:"
