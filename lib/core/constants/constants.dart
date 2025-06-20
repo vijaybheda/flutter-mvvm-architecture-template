@@ -1,1 +1,1 @@
-class GameConstants {}
+class Constants {}
