@@ -24,10 +24,10 @@ class ApiClient {
     Map<String, String>? headers,
   }) async {
     final uri = Uri.parse("${AppConfig.baseUrl}$path");
-
+    final defaultHeaders = await NetworkUtils.defaultHeaders();
     final response = await _client.post(
       uri,
-      headers: headers ?? NetworkUtils.defaultHeaders(),
+      headers: headers ?? defaultHeaders,
       body: jsonEncode(body),
     );
 
@@ -46,11 +46,8 @@ class ApiClient {
     Map<String, String>? headers,
   }) async {
     final uri = Uri.parse("${AppConfig.baseUrl}$path");
-
-    final response = await _client.get(
-      uri,
-      headers: headers ?? NetworkUtils.defaultHeaders(),
-    );
+    final defaultHeaders = await NetworkUtils.defaultHeaders();
+    final response = await _client.get(uri, headers: headers ?? defaultHeaders);
 
     return NetworkUtils.handleResponse(response);
   }
@@ -69,10 +66,11 @@ class ApiClient {
     Map<String, String>? headers,
   }) async {
     final uri = Uri.parse("${AppConfig.baseUrl}$path");
+    final defaultHeaders = await NetworkUtils.defaultHeaders();
 
     final response = await _client.put(
       uri,
-      headers: headers ?? NetworkUtils.defaultHeaders(),
+      headers: headers ?? defaultHeaders,
       body: jsonEncode(body),
     );
 
@@ -91,10 +89,11 @@ class ApiClient {
     Map<String, String>? headers,
   }) async {
     final uri = Uri.parse("${AppConfig.baseUrl}$path");
+    final defaultHeaders = await NetworkUtils.defaultHeaders();
 
     final response = await _client.delete(
       uri,
-      headers: headers ?? NetworkUtils.defaultHeaders(),
+      headers: headers ?? defaultHeaders,
     );
 
     return NetworkUtils.handleResponse(response);
@@ -114,10 +113,11 @@ class ApiClient {
     Map<String, String>? headers,
   }) async {
     final uri = Uri.parse("${AppConfig.baseUrl}$path");
+    final defaultHeaders = await NetworkUtils.defaultHeaders();
 
     final response = await _client.patch(
       uri,
-      headers: headers ?? NetworkUtils.defaultHeaders(),
+      headers: headers ?? defaultHeaders,
       body: jsonEncode(body),
     );
 
