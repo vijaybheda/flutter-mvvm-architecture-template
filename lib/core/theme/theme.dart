@@ -121,10 +121,6 @@ class AppTheme {
         dialBackgroundColor: backgroundColor,
       ),
       buttonTheme: ButtonThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
-          brightness: isLight ? Brightness.light : Brightness.dark,
-        ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -134,7 +130,6 @@ class AppTheme {
           side: BorderSide(color: AppColors.primary),
         ),
       ),
-      colorSchemeSeed: AppColors.primary,
       splashColor: AppColors.primary.withValues(alpha: 0.1),
       highlightColor: AppColors.primary.withValues(alpha: 0.05),
       hoverColor: AppColors.primary.withValues(alpha: 0.08),
