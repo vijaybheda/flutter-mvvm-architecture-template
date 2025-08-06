@@ -3,11 +3,11 @@ import 'package:flutter_mvvm_architecture_template/modules/error/error_404_scree
 import 'package:get/get.dart';
 
 class ScreenList {
- static GetPage<dynamic> unknownRoute = GetPage(
+  static GetPage<dynamic> unknownRoute = GetPage(
     name: Error404Screen.routeName,
     page: () => Error404Screen(),
   );
- static List<GetPage<dynamic>> getPages = [
+  static List<GetPage<dynamic>> getPages = [
     GetPage(name: AuthScreen.routeName, page: () => const AuthScreen()),
   ];
 }

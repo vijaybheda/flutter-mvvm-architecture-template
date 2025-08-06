@@ -20,7 +20,7 @@ class NetworkUtils {
   /// - Authorization: Bearer token
   static Future<Map<String, String>> defaultHeaders() async {
     // Use cached token if available, otherwise fetch it
-    String tokenToUse = _cachedToken ?? await LocalStorageService.getToken();
+    String tokenToUse = _cachedToken ?? LocalStorageService.getToken();
     _cachedToken = tokenToUse; // Update the cache
 
     return {

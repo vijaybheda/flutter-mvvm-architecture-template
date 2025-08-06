@@ -1,76 +1,73 @@
-import 'package:flutter/cupertino.dart';
-import 'package:toastification/toastification.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 class ToastMessage {
-  void success(String title, message, BuildContext context) {
+  void success(String title, String message, [BuildContext? context]) {
     try {
-      Size size = MediaQuery.of(context).size;
-      double width = size.width;
-      toastification.show(
-        alignment: width > 450 ? Alignment.topRight : Alignment.bottomCenter,
-        context: context,
-        title: width > 450 ? Text(title) : Text(title),
-        type: ToastificationType.success,
-        style: width > 450 ?ToastificationStyle.flatColored: ToastificationStyle.flatColored,
-        autoCloseDuration: const Duration(seconds: 3),
-        showProgressBar: false,
-        description: Text(message),
+      Get.snackbar(
+        title,
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(10),
+        borderRadius: 8,
+        icon: const Icon(Icons.check_circle, color: Colors.white),
       );
     } catch (e) {
       print(e);
     }
   }
 
-  void error(String title, message, BuildContext context) {
+  void error(String title, String message, [BuildContext? context]) {
     try {
-      Size size = MediaQuery.of(context).size;
-      double width = size.width;
-      toastification.show(
-        alignment: width > 450 ? Alignment.topRight : Alignment.bottomCenter,
-        context: context,
-        title: width > 450 ? Text(title) : Text(title),
-        type: ToastificationType.error,
-        style: width > 450 ?ToastificationStyle.flatColored: ToastificationStyle.flatColored,
-        autoCloseDuration: const Duration(seconds: 3),
-        showProgressBar: false,
-        description: Text(message),
+      Get.snackbar(
+        title,
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(10),
+        borderRadius: 8,
+        icon: const Icon(Icons.error, color: Colors.white),
       );
     } catch (e) {
       print(e);
     }
   }
 
-  void info(String title, message, BuildContext context) {
+  void info(String title, String message, [BuildContext? context]) {
     try {
-      Size size = MediaQuery.of(context).size;
-      double width = size.width;
-      toastification.show(
-        alignment: width > 450 ? Alignment.topRight : Alignment.bottomCenter,
-        context: context,
-        title: width > 450 ? Text(title) : Text(title),
-        type: ToastificationType.info,
-        style: width > 450 ?ToastificationStyle.flatColored: ToastificationStyle.flatColored,
-        autoCloseDuration: const Duration(seconds: 3),
-        showProgressBar: false,
-        description: Text(message),
+      Get.snackbar(
+        title,
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.blue,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(10),
+        borderRadius: 8,
+        icon: const Icon(Icons.info, color: Colors.white),
       );
     } catch (e) {
       print(e);
     }
   }
 
-  void warning(String title, message, BuildContext context) {
+  void warning(String title, String message, [BuildContext? context]) {
     try {
-      Size size = MediaQuery.of(context).size;
-      double width = size.width;
-      toastification.show(
-        alignment: width > 450 ? Alignment.topRight : Alignment.bottomCenter,
-        context: context,
-        title: width > 450 ? Text(title) : Text(title),
-        type: ToastificationType.warning,
-        style: width > 450 ?ToastificationStyle.flatColored: ToastificationStyle.flatColored,
-        autoCloseDuration: const Duration(seconds: 3),
-        showProgressBar: false,
-        description: Text(message),
+      Get.snackbar(
+        title,
+        message,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Colors.orange,
+        colorText: Colors.white,
+        duration: const Duration(seconds: 3),
+        margin: const EdgeInsets.all(10),
+        borderRadius: 8,
+        icon: const Icon(Icons.warning, color: Colors.white),
       );
     } catch (e) {
       print(e);

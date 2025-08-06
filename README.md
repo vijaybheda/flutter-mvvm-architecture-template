@@ -36,7 +36,7 @@ A robust and scalable Flutter template implementing the MVVM (Model-View-ViewMod
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/pragneshkoli/flutter-mvvm-architecture-template.git
+git clone https://github.com/vijaybheda/flutter-mvvm-architecture-template.git
 ```
 
 2. Rename the package:
@@ -241,4 +241,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by Pragnesh Koli
+Made with ❤️ by Vijay Bheda

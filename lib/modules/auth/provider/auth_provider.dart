@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture_template/core/services/local_storage_service.dart';
-import 'package:flutter_mvvm_architecture_template/core/utils/Logger.dart';
+import 'package:flutter_mvvm_architecture_template/core/utils/logger.dart';
 import 'package:flutter_mvvm_architecture_template/core/utils/toast_message.dart';
 import 'package:flutter_mvvm_architecture_template/modules/auth/models/auth_model.dart';
 import 'package:flutter_mvvm_architecture_template/modules/auth/repository/auth_repository.dart';
@@ -9,7 +8,7 @@ import 'package:get/get.dart';
 /// Provider class that manages authentication state and operations.
 /// This class handles user authentication, maintains auth state, and manages
 /// loading/error states during authentication processes.
-class AuthProvider extends ChangeNotifier {
+class AuthProvider {
   final IAuthRepository _repository;
 
   /// Creates an instance of AuthProvider with the required repository
@@ -53,25 +52,15 @@ class AuthProvider extends ChangeNotifier {
   Future<void> login(String username, String password) async {
     _isLoading = true;
     _error = null;
-    notifyListeners();
-    final result = await _repository.login(username, password).run();
-    result.match(
-      (failure) {
-        Logger.error("Login failed: ${failure.message}",StackTrace.current);
-        _error = failure.message;
-        _authData = null;
-      },
-      (data) {
-        Logger.log("Login successful");
-        _authData = data;
-        LocalStorageService.setToken(data.accessToken);
-        ToastMessage().success("Success", "Login Success", Get.context!);
-        _navigateBasedOnRole(data.role);
-      },
-    );
+    final result = await _repository.login(username, password);
+
+    Logger.log("Login successful");
+    _authData = result;
+    LocalStorageService.setToken(result.accessToken);
+    ToastMessage().success("Success", "Login Success", Get.context!);
+    _navigateBasedOnRole(result.role);
 
     _isLoading = false;
-    notifyListeners();
   }
 
   /// Navigates to appropriate screen based on user role
@@ -87,9 +76,8 @@ class AuthProvider extends ChangeNotifier {
       case 'MASTER':
       case 'USER':
       default:
-        Logger.error(" Unknown role: $role",StackTrace.current);
+        Logger.error(" Unknown role: $role", StackTrace.current);
         _error = "Unknown role: $role";
-        notifyListeners();
         return;
     }
   }

@@ -1,10 +1,9 @@
-import 'package:json_annotation/json_annotation.dart';
-
 class AuthModel {
   String id;
   String username;
   String role;
   String accessToken;
+
   AuthModel({
     required this.accessToken,
     required this.role,
@@ -19,5 +18,14 @@ class AuthModel {
       role: json['role'] as String,
       accessToken: json['access_token'] as String,
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'username': username,
+      'role': role,
+      'access_token': accessToken,
+    };
   }
 }

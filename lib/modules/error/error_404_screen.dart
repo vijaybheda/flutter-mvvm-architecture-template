@@ -32,9 +32,8 @@ class Error404Screen extends StatelessWidget {
                     title: "Lost in Space!",
                     description:
                     "The page you are looking for seems to be missing.",
-                    // button: you can pass your custom button,
-                    button:Container(),
-                    press: (){},
+                    button: Container(),
+                    press: () {},
                   ),
                 ],
               ),

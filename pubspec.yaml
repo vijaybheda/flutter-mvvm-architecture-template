@@ -35,18 +35,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   jwt_decoder:
-  shared_preferences:
-  provider:
+  get_storage:
   http:
-  loading_indicator:
   flutter_svg:
   get:
-  shimmer:
-  fpdart:
   intl:
-  google_fonts:
-  toastification:
-  freezed_annotation:
 
 
 dev_dependencies:

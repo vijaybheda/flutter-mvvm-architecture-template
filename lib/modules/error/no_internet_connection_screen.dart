@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture_template/modules/auth/screen/auth_screen.dart';
 import 'package:flutter_mvvm_architecture_template/navigation/getx_navigation.dart';
-// TODO: add flutter_svg package to pubspec.yaml
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NoInternetConnectionScreen extends StatelessWidget {
@@ -31,11 +30,11 @@ class NoInternetConnectionScreen extends StatelessWidget {
               ErrorInfo(
                 title: "Opps!....",
                 description:
-                "Something wrong with your connection, Please try again after a moment.",
-                // button: you can pass your custom button,
-                // btnText: default is retry, you can pass your custom text,
+                    "Something wrong with your connection, Please try again after a moment.",
                 press: () {
-                  GetxNavigation().navigateToNextAndRemovePreviousAll(AuthScreen.routeName);
+                  GetxNavigation().navigateToNextAndRemovePreviousAll(
+                    AuthScreen.routeName,
+                  );
                 },
               ),
             ],
@@ -74,26 +73,24 @@ class ErrorInfo extends StatelessWidget {
           children: [
             Text(
               title,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(
+                context,
+              ).textTheme.headlineSmall!.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 16),
-            Text(
-              description,
-              textAlign: TextAlign.center,
-            ),
+            Text(description, textAlign: TextAlign.center),
             const SizedBox(height: 16 * 2.5),
             button ??
                 ElevatedButton(
                   onPressed: press,
                   style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 48),
-                      backgroundColor: Colors.black,
-                      foregroundColor: Colors.white,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8)))),
+                    minimumSize: const Size(double.infinity, 48),
+                    backgroundColor: Colors.black,
+                    foregroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                  ),
                   child: Text(btnText ?? "Retry".toUpperCase()),
                 ),
             const SizedBox(height: 16),
@@ -105,7 +102,7 @@ class ErrorInfo extends StatelessWidget {
 }
 
 const noCoonectionIllistration =
-'''<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+    '''<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M495.37 347.17C529.49 305.3 601.8 305.22 636.11 346.94" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M572.22 752.17C632.85 752.17 682 707.533 682 652.47C682 597.407 632.85 552.77 572.22 552.77C511.59 552.77 462.44 597.407 462.44 652.47C462.44 707.533 511.59 752.17 572.22 752.17Z" fill="#D3D3D3"/>
 <path d="M661.48 426.87C648.61 485.3 705.2 572.53 710.53 651.73C711.31 783.67 431.53 787.67 431.53 651.73C431.53 579.49 479.87 496.31 469.24 430.06" stroke="#0E0E0E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>

@@ -2,27 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture_template/modules/auth/screen/auth_screen.dart';
 import 'package:flutter_mvvm_architecture_template/navigation/getx_navigation.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LocalStorageService {
-  static void setToken(String token) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('token', token);
+  static const String _tokenKey = 'token';
+  static late GetStorage _storage;
+
+  // Initialize the storage
+  static Future<void> init() async {
+    await GetStorage.init('app_name');
+    _storage = GetStorage('app_name');
   }
 
-  static Future<String> getToken() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token') ?? "";
-    return token;
+  static void setToken(String token) {
+    _storage.write(_tokenKey, token);
+  }
+
+  static String getToken() {
+    return _storage.read(_tokenKey) ?? "";
   }
 
   static Future<void> logout(String message) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String token = prefs.getString('token') ?? "";
+    String token = getToken();
     if (token.isEmpty) {
       return;
     }
-    await prefs.clear();
+    await _storage.erase();
     if (message.isNotEmpty) {
       Get.snackbar(
         'Error',
